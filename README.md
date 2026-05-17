@@ -76,37 +76,40 @@
 
 ```
 go-epic/
-├── config/
-│   └── db.js                   # MongoDB connection setup
-├── models/
-│   ├── Problem.js              # Main collection (3202 records)
-│   ├── Topic.js                # 285 unique topics
-│   ├── Dataset.js              # 2 dataset source records
-│   └── User.js                 # Auth users
-├── routes/
-│   ├── problem.routes.js       # /problems
-│   ├── topic.routes.js         # /topics
-│   ├── solution.routes.js      # /solutions
-│   ├── dataset.routes.js       # /datasets
-│   ├── auth.routes.js          # /auth
-│   ├── search.routes.js        # /search
-│   ├── stats.routes.js         # /stats
-│   └── admin.routes.js         # /admin (protected)
-├── middlewares/
-│   ├── auth.middleware.js      # JWT verify + role check
-│   ├── error.middleware.js     # Global error handler
-│   └── rateLimit.middleware.js # Rate limiting
-├── services/
-│   └── pagination.service.js  # Reusable paginate utility
-├── scripts/
-│   └── seed.js                 # DB seeder from JSON
-├── data/
-│   └── go-epic.json            # Source dataset (3202 records)
+||
+|src/
+|├── config/
+|│   └── db.js                   # MongoDB connection setup
+|├── models/
+|│   ├── Problem.js              # Main collection (3202 records)
+|│   ├── Topic.js                # 285 unique topics
+|│   ├── Dataset.js              # 2 dataset source records
+|│   └── User.js                 # Auth users
+|├── routes/
+|│   ├── problem.routes.js       # /problems
+|│   ├── topic.routes.js         # /topics
+|│   ├── solution.routes.js      # /solutions
+|│   ├── dataset.routes.js       # /datasets
+|│   ├── auth.routes.js          # /auth
+|│   ├── search.routes.js        # /search
+|│   ├── stats.routes.js         # /stats
+|│   └── admin.routes.js         # /admin (protected)
+|├── middlewares/
+|│   ├── auth.middleware.js      # JWT verify + role check
+|│   ├── error.middleware.js     # Global error handler
+|│   └── rateLimit.middleware.js # Rate limiting
+|├── services/
+|│   └── pagination.service.js  # Reusable paginate utility
+|├── scripts/
+|│   └── seed.js                 # DB seeder from JSON
+|├── data/
+|│   └── go-epic.json            # Source dataset (3202 records)
+|└── server.js                   # App entry point
 ├── .env                        # Environment variables
 ├── .env.example                # Example env file
 ├── .gitignore
-├── package.json
-└── server.js                   # App entry point
+|__ package.json
+
 ```
 
 ---
