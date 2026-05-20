@@ -1,432 +1,488 @@
-# Go-Epic API
+<div align="center">
 
-> A production-ready REST API for Go coding problems, topics, solutions, and datasets — built with Node.js, Express.js, and MongoDB.
+```
+  ██████╗  ██████╗        ███████╗██████╗ ██╗ ██████╗
+ ██╔════╝ ██╔═══██╗       ██╔════╝██╔══██╗██║██╔════╝
+ ██║  ███╗██║   ██║ █████╗█████╗  ██████╔╝██║██║
+ ██║   ██║██║   ██║ ╚════╝██╔══╝  ██╔═══╝ ██║██║
+ ╚██████╔╝╚██████╔╝       ███████╗██║     ██║╚██████╗
+  ╚═════╝  ╚═════╝        ╚══════╝╚═╝     ╚═╝ ╚═════╝
+```
 
-[![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?logo=node.js&logoColor=white)](https://nodejs.org)
-[![Express.js](https://img.shields.io/badge/Express.js-4.x-000000?logo=express&logoColor=white)](https://expressjs.com)
-[![MongoDB](https://img.shields.io/badge/MongoDB-6.x-47A248?logo=mongodb&logoColor=white)](https://mongodb.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+### 🚀 Production-Ready REST API for Go Programming Challenges
+**3,202 Problems · 200+ Topics · JWT Auth · MongoDB Aggregation · Rate Limiting**
 
----
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-4.x-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-7.x-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [API Reference](#api-reference)
-  - [Problems](#problems-routes----problems)
-  - [Topics](#topics-routes----topics)
-  - [Solutions](#solutions-routes----solutions)
-  - [Datasets](#datasets-routes----datasets)
-  - [Search](#search-routes----search)
-  - [Auth](#auth-routes----auth)
-  - [Stats](#stats-routes----stats)
-  - [Admin](#admin-routes----admin)
-  - [Utility](#utility-routes)
-- [Authentication](#authentication)
-- [Rate Limiting](#rate-limiting)
-- [Error Handling](#error-handling)
-- [Data Reference](#data-reference)
-- [Environment Variables](#environment-variables)
-- [Scripts](#scripts)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
+</div>
 
 ---
 
-## Overview
+## 📌 Table of Contents
 
-**Go-Epic** is a structured REST API that serves a curated dataset of **3,202 Go programming problems** spanning 285 unique topics — from beginner-level exercises to advanced Go source code analysis. It is designed to power learning tools, coding challenge platforms, and developer resources built around the Go language.
-
----
-
-## Features
-
-- 📦 **3,202 Go problems** seeded from a curated JSON dataset
-- 🏷️ **285 unique topics** including concurrency, interfaces, generics, and more
-- 🔐 **JWT authentication** with access + refresh token flow, OTP support, and role-based access control
-- 🔍 **Full-text search** across problems, topics, solutions, and datasets
-- 📊 **Stats endpoints** for aggregated insights by difficulty, topic, and source
-- 🔄 **Pagination, sorting, and filtering** on all major list endpoints
-- 🛡️ **Rate limiting** to protect the API from abuse
-- 🌱 **Database seeder** to bootstrap the full dataset in one command
-- 👤 **Admin panel routes** protected by JWT + admin role
+- [Overview](#-overview)
+- [Tech Stack](#-tech-stack)
+- [Dataset](#-dataset)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Environment Variables](#-environment-variables)
+- [Collections & Schema Design](#-collections--schema-design)
+- [API Reference](#-api-reference)
+- [Authentication Guide](#-authentication-guide)
+- [Good to Have Features](#-good-to-have-features-implemented)
+- [System Design](#-system-design)
 
 ---
 
-## Tech Stack
+## 🧠 Overview
 
-| Layer | Technology |
-|-------|------------|
-| Runtime | Node.js v18+ |
-| Framework | Express.js |
-| Database | MongoDB + Mongoose |
-| Authentication | JWT (access + refresh tokens) |
-| Password Hashing | bcryptjs |
-| Rate Limiting | express-rate-limit |
-| Dev Server | nodemon |
+**Go-Epic** is a full-featured backend REST API built for a Go programming challenge platform — similar to LeetCode, but focused entirely on the Go language. It serves **3,202 real problems** with solutions, sourced from Go's standard library, go.dev documentation, and LeetCode.
+
+The API follows **MVC architecture** with clean separation between routes, controllers, services, and models — making it scalable, maintainable, and production-ready.
 
 ---
 
-## Project Structure
+## ⚙️ Tech Stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Runtime | Node.js 18+ | Server-side JavaScript |
+| Framework | Express.js 4.x | HTTP routing & middleware |
+| Database | MongoDB + Mongoose | NoSQL data storage |
+| Auth | JWT + bcryptjs | Secure authentication |
+| Rate Limiting | express-rate-limit | API abuse protection |
+| Config | dotenv | Environment management |
+| Dev Tool | nodemon | Hot reloading |
+
+---
+
+## 📦 Dataset
+
+The dataset contains **3,202 Go programming records** with the following structure:
+
+| Field | Count | Description |
+|---|---|---|
+| `instruction` | 3,202 | The problem or question |
+| `output` | 3,202 | Full solution with code |
+| `topic` | 3,202 | 200+ topic categories |
+| `dataset_source` | 3,202 | `previous-ultimate-dataset` or `go-source-code` |
+| `difficulty` | 2,951 | beginner / easy / medium / intermediate / advanced / hard |
+| `url` + `source` | 1,249 | go.dev or LeetCode links |
+| `source_file`, `package`, `function` | 1,681 | Go stdlib code analysis |
+| `complexity_score` | 1,681 | Numeric complexity rating |
+| `problem_number` | 572 | LeetCode problem number |
+
+---
+
+## 📁 Project Structure
 
 ```
 go-epic/
-||
-|src/
-|├── config/
-|│   └── db.js                   # MongoDB connection setup
-|├── models/
-|│   ├── Problem.js              # Main collection (3202 records)
-|│   ├── Topic.js                # 285 unique topics
-|│   ├── Dataset.js              # 2 dataset source records
-|│   └── User.js                 # Auth users
-|├── routes/
-|│   ├── problem.routes.js       # /problems
-|│   ├── topic.routes.js         # /topics
-|│   ├── solution.routes.js      # /solutions
-|│   ├── dataset.routes.js       # /datasets
-|│   ├── auth.routes.js          # /auth
-|│   ├── search.routes.js        # /search
-|│   ├── stats.routes.js         # /stats
-|│   └── admin.routes.js         # /admin (protected)
-|├── middlewares/
-|│   ├── auth.middleware.js      # JWT verify + role check
-|│   ├── error.middleware.js     # Global error handler
-|│   └── rateLimit.middleware.js # Rate limiting
-|├── services/
-|│   └── pagination.service.js  # Reusable paginate utility
-|├── scripts/
-|│   └── seed.js                 # DB seeder from JSON
-|├── data/
-|│   └── go-epic.json            # Source dataset (3202 records)
-|└── server.js                   # App entry point
-├── .env                        # Environment variables
-├── .env.example                # Example env file
-├── .gitignore
-|__ package.json
-
+├── src/
+│   ├── config/
+│   │   └── db.js                    ← MongoDB connection with error handling
+│   │
+│   ├── models/                      ← Mongoose schemas (database structure)
+│   │   ├── problem.model.js         ← 13 fields, indexed for performance
+│   │   ├── topic.model.js           ← Topic metadata with problem counts
+│   │   ├── solution.model.js        ← Solutions linked to problems (ref)
+│   │   ├── dataset.model.js         ← Dataset source summaries
+│   │   └── user.model.js            ← Users with role-based access
+│   │
+│   ├── controllers/                 ← Request/Response handlers only
+│   │   ├── problem.controller.js
+│   │   ├── topic.controller.js
+│   │   ├── solution.controller.js
+│   │   ├── dataset.controller.js
+│   │   ├── auth.controller.js
+│   │   ├── jwt.controller.js
+│   │   ├── admin.controller.js
+│   │   ├── protected.controller.js
+│   │   └── search.controller.js
+│   │
+│   ├── services/                    ← Business logic & DB query layer
+│   │   ├── problem.service.js       ← Filter, sort, paginate, aggregate
+│   │   ├── topic.service.js
+│   │   ├── solution.service.js
+│   │   ├── dataset.service.js
+│   │   └── auth.service.js
+│   │
+│   ├── routes/                      ← Express route definitions
+│   │   ├── problem.routes.js
+│   │   ├── topic.routes.js
+│   │   ├── solution.routes.js
+│   │   ├── dataset.routes.js
+│   │   ├── auth.routes.js
+│   │   ├── jwt.routes.js
+│   │   ├── admin.routes.js
+│   │   ├── protected.routes.js
+│   │   └── search.routes.js
+│   │
+│   ├── middlewares/                 ← Request pipeline middleware
+│   │   ├── auth.middleware.js       ← JWT token verification
+│   │   ├── role.middleware.js       ← Role-based access (admin/user)
+│   │   ├── logger.middleware.js     ← Request logging with timestamp
+│   │   ├── error.middleware.js      ← Global error handler
+│   │   └── rateLimit.middleware.js  ← Rate limiting per route type
+│   │
+│   ├── app.js                       ← Express app config + route mounting
+│   ├── index.js                     ← Server entry point
+│   └── seed.js                      ← Database seeder script
+│
+├── .env                             ← Environment variables (never commit)
+├── .env.example                     ← Template for setup
+├── package.json
+└── README.md
 ```
 
 ---
 
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
+- Node.js 18+
+- MongoDB (local or Atlas)
 
-- Node.js v18+
-- MongoDB running locally (`mongodb://localhost:27017`) or a MongoDB Atlas URI
-
-### 1. Clone and install
-
+### Step 1 — Install dependencies
 ```bash
-git clone <your-repo-url>
-cd go-epic
 npm install
 ```
 
-### 2. Setup environment variables
-
+### Step 2 — Configure environment
 ```bash
 cp .env.example .env
+# Edit .env and add your MongoDB URI
 ```
 
-Edit `.env`:
+### Step 3 — Add dataset
+```
+Place the downloaded go-epic JSON file at:
+  go-epic/go-epic.json
+```
+
+### Step 4 — Seed the database *(run once)*
+```bash
+npm run seed
+```
+Expected output:
+```
+MongoDB Connected: localhost
+📦 Dataset loaded: 3202 records
+🗑️  Cleared existing data
+✅ Inserted 3202 problems
+✅ Inserted 211 topics
+✅ Inserted 2 dataset records
+🎉 Seeding complete!
+```
+
+### Step 5 — Start the server
+```bash
+npm run dev        # Development (hot reload)
+npm start          # Production
+```
+
+### Step 6 — Verify it's running
+```bash
+curl http://localhost:5000/health
+# { "success": true, "status": "ok", "uptime": 1.23 }
+```
+
+---
+
+## 🔐 Environment Variables
 
 ```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/go-epic
+JWT_SECRET=your_super_secret_key_here
+JWT_EXPIRES_IN=7d
 NODE_ENV=development
-JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
-JWT_EXPIRE=7d
-JWT_REFRESH_SECRET=your_refresh_secret_key
-JWT_REFRESH_EXPIRE=30d
 ```
-
-### 3. Add the dataset
-
-Place `go-epic.json` inside the `data/` folder:
-
-```
-go-epic/
-└── data/
-    └── go-epic.json
-```
-
-### 4. Seed the database
-
-```bash
-npm run seed
-```
-
-Expected output:
-
-```
-✅ MongoDB Connected: localhost
-🌱 Starting seed process...
-🗑️  Clearing existing collections...
-   ✓ Collections cleared
-📂 Reading JSON dataset...
-   ✓ Loaded 3202 records
-📥 Inserting problems...
-   ✓ 3202 problems inserted
-📥 Extracting and inserting topics...
-   ✓ 285 topics inserted
-📥 Inserting datasets...
-   ✓ 2 datasets inserted
-═══════════════════════════════════════
-✅ SEED COMPLETE
-   Problems : 3202
-   Topics   : 285
-   Datasets : 2
-═══════════════════════════════════════
-```
-
-### 5. Start the server
-
-```bash
-# Development (with auto-restart)
-npm run dev
-
-# Production
-npm start
-```
-
-Server runs at: `http://localhost:5000`
 
 ---
 
-## API Reference
+## 🗃️ Collections & Schema Design
 
-### Base URL
+### Problems Collection
+```js
+{
+  instruction:     String  (required, indexed)    // The problem statement
+  output:          String  (required)             // Full solution
+  topic:           String  (required, indexed)    // e.g. "concurrency-patterns"
+  dataset_source:  String  (required, indexed)    // "previous-ultimate-dataset" | "go-source-code"
+  difficulty:      String  (enum, indexed)        // beginner → hard
+  url:             String                         // Source URL
+  source:          String                         // "go.dev" | "leetcode"
+  content_type:    String                         // blog | tutorial | docs ...
+  source_file:     String                         // Go stdlib file path
+  package:         String                         // Go package name
+  function:        String                         // Go function name
+  complexity_score:Number                         // Numeric complexity
+  problem_number:  Number  (indexed)              // LeetCode number
+  createdAt:       Date    (auto)
+  updatedAt:       Date    (auto)
+}
+```
 
+### Relationships
 ```
-http://localhost:5000
+Problems  ──────────────────→  Topics    (topic field → topic.name)
+Solutions ──[ ref ]──────────→ Problems  (problemId → problem._id)
+Datasets  ──[ summary ]──────→ Problems  (source → dataset_source)
+Users     ──[ role-based ]───→ All       (admin routes protected)
 ```
+
+---
+
+## 📡 API Reference
 
 ### Standard Response Format
-
-All successful responses follow this structure:
-
 ```json
 {
   "success": true,
-  "count": 10,
+  "message": "Problems fetched",
+  "data": [...],
   "total": 3202,
   "page": 1,
-  "totalPages": 321,
-  "data": [...]
-}
-```
-
-Single-resource responses omit pagination fields:
-
-```json
-{
-  "success": true,
-  "data": { ... }
-}
-```
-
-Error response:
-
-```json
-{
-  "success": false,
-  "message": "Resource not found"
+  "limit": 10,
+  "totalPages": 321
 }
 ```
 
 ---
 
-## Problems Routes — `/problems`
+### 🔷 Problems
 
 | Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/problems` | ❌ | Get all problems (paginated) |
-| GET | `/problems/:problemId` | ❌ | Get single problem by ID |
+|---|---|---|---|
+| GET | `/problems` | ❌ | Fetch all problems (filter + sort + paginate) |
+| GET | `/problems/:problemId` | ❌ | Fetch single problem by ID |
 | POST | `/problems` | ✅ | Create new problem |
-| PUT | `/problems/:problemId` | ✅ | Replace problem (full update) |
-| PATCH | `/problems/:problemId` | ✅ | Update specific problem fields |
+| PUT | `/problems/:problemId` | ✅ | Replace complete problem |
+| PATCH | `/problems/:problemId` | ✅ | Update problem fields |
 | DELETE | `/problems/:problemId` | ✅ | Delete problem |
-| GET | `/problems/topic/:topic` | ❌ | Filter problems by topic |
-| GET | `/problems/difficulty/:difficulty` | ❌ | Filter by difficulty |
-| GET | `/problems/source/:source` | ❌ | Filter by dataset source |
-| GET | `/problems/instruction/:keyword` | ❌ | Filter by keyword in instruction |
-| GET | `/problems/random` | ❌ | Get a random problem |
-| GET | `/problems/trending` | ❌ | Get trending problems |
-| GET | `/problems/recent` | ❌ | Get recently added problems |
-| HEAD | `/problems` | ❌ | Get response headers only |
-| OPTIONS | `/problems` | ❌ | List allowed HTTP methods |
+| GET | `/problems/random` | ❌ | Random problem |
+| GET | `/problems/recent` | ❌ | Recently added problems |
+| GET | `/problems/trending` | ❌ | Trending problems |
+| GET | `/problems/advanced` | ❌ | All advanced problems (paginated) |
+| GET | `/problems/topic/:topic` | ❌ | Problems by topic |
+| GET | `/problems/difficulty/:difficulty` | ❌ | Problems by difficulty |
+| GET | `/problems/source/:source` | ❌ | Problems by dataset source |
+| GET | `/problems/instruction/:keyword` | ❌ | Problems by keyword in instruction |
+| POST | `/problems/import-json` | 🔐 Admin | Bulk import JSON array |
+| HEAD | `/problems` | ❌ | Headers only (X-Total-Count) |
+| HEAD | `/problems/:problemId` | ❌ | Headers for single problem |
+| OPTIONS | `/problems` | ❌ | Allowed methods |
+| OPTIONS | `/problems/:problemId` | ❌ | Allowed methods |
 
-### Query Parameters for `GET /problems`
-
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `difficulty` | string | Filter by difficulty level | `?difficulty=advanced` |
-| `topic` | string | Filter by topic slug | `?topic=concurrency-patterns` |
-| `source` | string | Filter by dataset source | `?source=go-source-code` |
-| `keyword` | string | Keyword search in instruction | `?keyword=worker` |
-| `page` | number | Page number (default: 1) | `?page=2` |
-| `limit` | number | Results per page (default: 10) | `?limit=20` |
-| `sort` | string | Sort field; prefix with `-` for descending | `?sort=-difficulty` |
-
-### POST /problems — Required fields
-
-```json
-{
-  "instruction": "Build a worker pool in Go",
-  "output": "package main...",
-  "topic": "concurrency-patterns",
-  "difficulty": "advanced",
-  "dataset_source": "previous-ultimate-dataset"
-}
+**Query Parameters (all combinable):**
+```
+?difficulty=advanced
+?topic=concurrency-patterns
+?source=previous-ultimate-dataset
+?dataset_source=go-source-code
+?keyword=worker
+?q=goroutine              → full-text search (instruction + topic + output)
+?sort=topic               → sort ascending
+?sort=-difficulty         → sort descending
+?page=1&limit=10          → pagination
 ```
 
-### Example Requests
-
+**Example Requests:**
 ```bash
-# Get first 5 advanced problems
-GET /problems?difficulty=advanced&limit=5
-
-# Get problems on a specific topic, sorted by difficulty
-GET /problems?topic=concurrency-patterns&sort=difficulty
-
-# Get a random problem
-GET /problems/random
-
-# Get problems from a specific source, page 2
-GET /problems/source/go-source-code?page=2&limit=10
+GET /problems?difficulty=advanced&page=1&limit=10&sort=topic
+GET /problems?topic=concurrency-patterns&page=2&limit=5
+GET /problems?source=previous-ultimate-dataset&sort=-difficulty
 ```
 
 ---
 
-## Topics Routes — `/topics`
+### 🔷 Topics
 
 | Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/topics` | ❌ | Get all topics (paginated) |
-| GET | `/topics/:topicName` | ❌ | Get topic by name |
+|---|---|---|---|
+| GET | `/topics` | ❌ | All topics (search + sort + paginate) |
+| GET | `/topics/:topicName` | ❌ | Single topic |
 | POST | `/topics` | ✅ | Create topic |
-| PUT | `/topics/:topicName` | ✅ | Replace topic (full update) |
-| PATCH | `/topics/:topicName` | ✅ | Update specific topic fields |
+| PUT | `/topics/:topicName` | ✅ | Replace topic |
+| PATCH | `/topics/:topicName` | ✅ | Update topic |
 | DELETE | `/topics/:topicName` | ✅ | Delete topic |
-| GET | `/topics/name/:name` | ❌ | Find by exact name |
-| GET | `/topics/category/:category` | ❌ | Filter by category |
-| GET | `/topics/popular` | ❌ | Most popular topics by problem count |
+| GET | `/topics/popular` | ❌ | Most popular topics |
 | GET | `/topics/trending` | ❌ | Trending topics |
-
-### Query Parameters for `GET /topics`
-
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `search` | string | Search topics by name | `?search=concurrency` |
-| `sort` | string | Sort field | `?sort=name` or `?sort=-problemCount` |
-| `page` | number | Page number | `?page=1` |
-| `limit` | number | Results per page | `?limit=20` |
-
-### Example Requests
+| GET | `/topics/name/:name` | ❌ | Topic by exact name |
+| GET | `/topics/category/:category` | ❌ | Topics by category |
+| HEAD | `/topics` | ❌ | Headers only |
+| HEAD | `/topics/:topicName` | ❌ | Single topic headers |
+| OPTIONS | `/topics` | ❌ | Allowed methods |
+| OPTIONS | `/topics/:topicName` | ❌ | Allowed methods |
 
 ```bash
-# Search for concurrency-related topics
-GET /topics?search=concurrency
-
-# Get most popular topics
-GET /topics/popular
-
-# Get topics in a category
-GET /topics/category/standard-library
+GET /topics?search=concurrency&page=1&limit=5
+GET /topics?sort=name
+GET /topics/popular?page=1&limit=10
 ```
 
 ---
 
-## Solutions Routes — `/solutions`
-
-Solutions are problems with their `output` field exposed — same underlying data, different projection.
+### 🔷 Solutions
 
 | Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/solutions` | ❌ | Get all solutions (paginated) |
-| GET | `/solutions/:solutionId` | ❌ | Get single solution by ID |
+|---|---|---|---|
+| GET | `/solutions` | ❌ | All solutions |
+| GET | `/solutions/:solutionId` | ❌ | Single solution |
 | POST | `/solutions` | ✅ | Create solution |
-| PUT | `/solutions/:solutionId` | ✅ | Replace solution (full update) |
-| PATCH | `/solutions/:solutionId` | ✅ | Update specific solution fields |
+| PUT | `/solutions/:solutionId` | ✅ | Replace solution |
+| PATCH | `/solutions/:solutionId` | ✅ | Update solution |
 | DELETE | `/solutions/:solutionId` | ✅ | Delete solution |
-| GET | `/solutions/topic/:topic` | ❌ | Filter solutions by topic |
-| GET | `/solutions/difficulty/:difficulty` | ❌ | Filter by difficulty |
-| GET | `/solutions/source/:source` | ❌ | Filter by source |
-| GET | `/solutions/random` | ❌ | Get a random solution |
-| GET | `/solutions/trending` | ❌ | Get trending solutions |
-| GET | `/solutions/recent` | ❌ | Get recently added solutions |
+| GET | `/solutions/random` | ❌ | Random solution |
+| GET | `/solutions/recent` | ❌ | Recent solutions |
+| GET | `/solutions/trending` | ❌ | Trending solutions |
+| GET | `/solutions/topic/:topic` | ❌ | Solutions by topic |
+| GET | `/solutions/difficulty/:difficulty` | ❌ | Solutions by difficulty |
+| GET | `/solutions/source/:source` | ❌ | Solutions by source |
+| HEAD | `/solutions` | ❌ | Headers only |
+| HEAD | `/solutions/:solutionId` | ❌ | Single solution headers |
+| OPTIONS | `/solutions` | ❌ | Allowed methods |
+| OPTIONS | `/solutions/:solutionId` | ❌ | Allowed methods |
 
 ---
 
-## Datasets Routes — `/datasets`
+### 🔷 Datasets
 
 | Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/datasets` | ❌ | Get all datasets |
-| GET | `/datasets/:datasetId` | ❌ | Get single dataset by ID |
+|---|---|---|---|
+| GET | `/datasets` | ❌ | All datasets |
+| GET | `/datasets/:datasetId` | ❌ | Single dataset |
 | POST | `/datasets` | ✅ | Create dataset |
-| PUT | `/datasets/:datasetId` | ✅ | Replace dataset (full update) |
-| PATCH | `/datasets/:datasetId` | ✅ | Update specific dataset fields |
-| DELETE | `/datasets/:datasetId` | ✅ | Delete dataset |
-| GET | `/datasets/source/:source` | ❌ | Filter by source |
-| GET | `/datasets/topic/:topic` | ❌ | Filter by topic |
-| GET | `/datasets/difficulty/:difficulty` | ❌ | Filter by difficulty |
-| GET | `/datasets/recent` | ❌ | Get recently added datasets |
-| GET | `/datasets/latest` | ❌ | Get latest datasets (paginated) |
+| PUT | `/datasets/:datasetId` | ✅ | Replace dataset |
+| PATCH | `/datasets/:datasetId` | ✅ | Update dataset |
+| DELETE | `/datasets/:datasetId` | ✅ | Delete dataset (rate limited) |
+| GET | `/datasets/recent` | ❌ | Recent datasets |
+| GET | `/datasets/latest` | ❌ | Latest datasets |
+| GET | `/datasets/source/:source` | ❌ | By source |
+| GET | `/datasets/topic/:topic` | ❌ | By topic |
+| GET | `/datasets/difficulty/:difficulty` | ❌ | By difficulty |
+| HEAD | `/datasets` | ❌ | Headers only |
+| HEAD | `/datasets/:datasetId` | ❌ | Single dataset headers |
+| OPTIONS | `/datasets` | ❌ | Allowed methods |
+| OPTIONS | `/datasets/:datasetId` | ❌ | Allowed methods |
 
 ---
 
-## Search Routes — `/search`
+### 🔷 Authentication
 
-All search endpoints accept a `q` query parameter and perform case-insensitive regex matching across relevant text fields.
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/auth/register` | ❌ | Register new user |
+| POST | `/auth/login` | ❌ | Login (returns JWT token) |
+| POST | `/auth/logout` | ✅ | Logout |
+| GET | `/auth/profile` | ✅ | Get own profile |
+| PATCH | `/auth/profile` | ✅ | Update own profile |
+| POST | `/auth/forgot-password` | ❌ | Request password reset |
+| POST | `/auth/reset-password` | ❌ | Reset password with token |
+| POST | `/auth/send-otp` | ❌ | Send OTP |
+| POST | `/auth/verify-otp` | ❌ | Verify OTP |
+| POST | `/auth/refresh-token` | ❌ | Refresh JWT token |
+| OPTIONS | `/auth/login` | ❌ | Allowed methods |
+
+---
+
+### 🔷 JWT Routes
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/jwt/profile` | ✅ | JWT-protected profile |
+| GET | `/jwt/dashboard` | ✅ | JWT-protected dashboard |
+| POST | `/jwt/generate-token` | ❌ | Generate a JWT token |
+| POST | `/jwt/verify-token` | ❌ | Verify a JWT token |
+| POST | `/jwt/refresh-token` | ❌ | Refresh JWT token |
+| GET | `/jwt/admin` | 🔐 Admin | Admin-only route |
+| GET | `/jwt/user` | ✅ | User route |
+| GET | `/jwt/check-role/admin` | 🔐 Admin | Verify admin role |
+| OPTIONS | `/jwt/profile` | ❌ | Allowed methods |
+
+---
+
+### 🔷 Admin Routes *(Admin JWT required)*
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/search/problems?q=worker` | Search problems by instruction, topic, or output |
-| GET | `/search/topics?q=concurrency` | Search topics by name or description |
-| GET | `/search/solutions?q=mutex` | Search solutions by content |
-| GET | `/search/datasets?q=advanced` | Search datasets by metadata |
-
-### Example Requests
-
-```bash
-# Search for problems mentioning "goroutine"
-GET /search/problems?q=goroutine
-
-# Search for topics related to "channel"
-GET /search/topics?q=channel
-
-# Search for solutions using mutex
-GET /search/solutions?q=mutex
-```
+|---|---|---|
+| GET | `/admin/problems` | All problems (admin view) |
+| GET | `/admin/topics` | All topics (admin view) |
+| GET | `/admin/solutions` | All solutions (admin view) |
+| GET | `/admin/datasets` | All datasets (admin view) |
+| GET | `/admin/dashboard` | Admin dashboard stats |
+| OPTIONS | `/admin/problems` | Allowed methods |
+| OPTIONS | `/admin/topics` | Allowed methods |
+| OPTIONS | `/admin/solutions` | Allowed methods |
+| OPTIONS | `/admin/datasets` | Allowed methods |
 
 ---
 
-## Auth Routes — `/auth`
+### 🔷 Protected Routes *(Any JWT required)*
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/auth/register` | ❌ | Register a new user |
-| POST | `/auth/login` | ❌ | Login and receive JWT tokens |
-| POST | `/auth/logout` | ✅ | Logout and clear refresh token |
-| GET | `/auth/profile` | ✅ | Get the logged-in user's profile |
-| PATCH | `/auth/profile` | ✅ | Update profile details |
-| POST | `/auth/forgot-password` | ❌ | Request a password reset link |
-| POST | `/auth/reset-password` | ❌ | Reset password with token |
-| POST | `/auth/send-otp` | ❌ | Send OTP to email |
-| POST | `/auth/verify-otp` | ❌ | Verify submitted OTP |
-| POST | `/auth/refresh-token` | ❌ | Exchange refresh token for new access token |
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/protected/problems` | JWT-protected problems |
+| GET | `/protected/topics` | JWT-protected topics |
+| GET | `/protected/solutions` | JWT-protected solutions |
+| GET | `/protected/datasets` | JWT-protected datasets |
+
+---
+
+### 🔷 Search Routes
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/search/problems?q=worker` | Full-text search problems |
+| GET | `/search/problems?q=atomic` | Search atomic problems |
+| GET | `/search/problems?q=token` | Search token bucket problems |
+| GET | `/search/topics?q=concurrency` | Search topics |
+| GET | `/search/topics?q=goroutines` | Search goroutine topics |
+| GET | `/search/solutions?q=mutex` | Search solutions |
+| GET | `/search/solutions?q=channel` | Search channel solutions |
+| GET | `/search/datasets?q=advanced` | Search datasets |
+| OPTIONS | `/search/problems` | Allowed methods |
+
+---
+
+### 🔷 Statistics Routes *(Aggregation Pipeline)*
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/stats/problems` | Full problem breakdown (by difficulty, topic, source) |
+| GET | `/stats/topics` | Topic stats grouped by category |
+| GET | `/stats/difficulties` | Count by difficulty level |
+| GET | `/stats/datasets` | Dataset summary info |
+| GET | `/stats/advanced-problems` | Count of advanced problems only |
+| GET | `/stats/topic/concurrency-patterns` | Stats for specific topic |
+| GET | `/stats/source/previous-ultimate-dataset` | Stats for specific source |
+| GET | `/stats/total-solutions` | Total solution count |
+| HEAD | `/stats/problems` | Headers with X-Total-Count |
+
+---
+
+### 🔷 System Routes
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/health` | Server health check |
+| GET | `/version` | API version info |
+| GET | `/server-status` | Runtime environment status |
+| GET | `/metrics` | Memory usage + uptime |
+| HEAD | `/health` | Health status headers only |
+| OPTIONS | `/health` | Allowed communication methods |
+
+---
+
+## 🔐 Authentication Guide
 
 ### Register
-
-```json
+```bash
 POST /auth/register
 Content-Type: application/json
 
@@ -437,24 +493,8 @@ Content-Type: application/json
 }
 ```
 
-Response:
-
-```json
-{
-  "success": true,
-  "message": "User registered successfully",
-  "data": {
-    "id": "64f1a...",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "role": "user"
-  }
-}
-```
-
-### Login
-
-```json
+### Login → Get Token
+```bash
 POST /auth/login
 Content-Type: application/json
 
@@ -462,366 +502,116 @@ Content-Type: application/json
   "email": "john@example.com",
   "password": "secret123"
 }
-```
 
-Response:
-
-```json
+# Response:
 {
   "success": true,
-  "token": "eyJhbGci...",
-  "refreshToken": "eyJhbGci...",
-  "data": {
-    "id": "64f1a...",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "role": "user"
-  }
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": { "id": "...", "name": "John", "role": "user" }
 }
 ```
 
-### Refresh Token
-
-```json
-POST /auth/refresh-token
-Content-Type: application/json
-
-{
-  "refreshToken": "eyJhbGci..."
-}
-```
-
-Response:
-
-```json
-{
-  "success": true,
-  "token": "eyJhbGci..."
-}
-```
-
----
-
-## Stats Routes — `/stats`
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/stats/problems` | Problem counts grouped by difficulty, topic, and source |
-| GET | `/stats/topics` | Topic counts grouped by category |
-| GET | `/stats/difficulties` | Total count per difficulty level |
-| GET | `/stats/datasets` | All dataset metadata |
-| GET | `/stats/advanced-problems` | Count of advanced-difficulty problems |
-| GET | `/stats/topic/:topicName` | Stats for a specific topic |
-| GET | `/stats/source/:sourceName` | Stats for a specific dataset source |
-| GET | `/stats/total-solutions` | Total solution count |
-
-### Example Response — `GET /stats/difficulties`
-
-```json
-{
-  "success": true,
-  "data": [
-    { "difficulty": "beginner", "count": 1884 },
-    { "difficulty": "intermediate", "count": 381 },
-    { "difficulty": "medium", "count": 268 },
-    { "difficulty": "hard", "count": 158 },
-    { "difficulty": "easy", "count": 146 },
-    { "difficulty": "advanced", "count": 114 },
-    { "difficulty": null, "count": 251 }
-  ]
-}
-```
-
----
-
-## Admin Routes — `/admin`
-
-> **Requires:** Valid JWT token with `role: "admin"`
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/admin/problems` | Admin view of all problems |
-| GET | `/admin/topics` | Admin view of all topics |
-| GET | `/admin/solutions` | Admin view of all solutions |
-| GET | `/admin/datasets` | Admin view of all datasets |
-
-To grant admin access, update the user's role directly in the database:
-
-```javascript
-db.users.updateOne({ email: "admin@example.com" }, { $set: { role: "admin" } })
-```
-
----
-
-## Utility Routes
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Server health check |
-| GET | `/version` | API version and environment info |
-
-### Example Response — `GET /health`
-
-```json
-{
-  "success": true,
-  "status": "ok",
-  "uptime": 3600,
-  "timestamp": "2024-01-15T10:00:00.000Z"
-}
-```
-
----
-
-## Authentication
-
-Go-Epic uses **JWT-based authentication** with a dual-token strategy:
-
-| Token | Expiry | Purpose |
-|-------|--------|---------|
-| Access Token | 7 days (`JWT_EXPIRE`) | Used in `Authorization` header for protected routes |
-| Refresh Token | 30 days (`JWT_REFRESH_EXPIRE`) | Used to obtain a new access token without re-login |
-
-### Using JWT in Requests
-
-Include the access token in the `Authorization` header for all protected routes:
-
+### Use Token in Protected Requests
 ```bash
-Authorization: Bearer <your_access_token>
-```
-
-Example with curl:
-
-```bash
-curl -H "Authorization: Bearer eyJhbGci..." \
-     http://localhost:5000/auth/profile
-```
-
-### Token Lifecycle
-
-```
-Register/Login → Access Token + Refresh Token
-     ↓
-Access Token expires → POST /auth/refresh-token → New Access Token
-     ↓
-Refresh Token expires → Re-login required
+GET /auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 ---
 
-## Rate Limiting
+## ✅ Good to Have Features (Implemented)
 
-The API uses `express-rate-limit` to prevent abuse. Default limits (configurable via `rateLimit.middleware.js`):
-
-| Scope | Limit | Window |
-|-------|-------|--------|
-| Global | 100 requests | 15 minutes |
-| Auth routes | 10 requests | 15 minutes |
-
-When exceeded, the API returns:
-
-```json
-{
-  "success": false,
-  "message": "Too many requests, please try again later."
-}
-```
-
-HTTP Status: `429 Too Many Requests`
+| # | Feature | Status | Details |
+|---|---|---|---|
+| 1 | API Response Standardization | ✅ | All responses: `{ success, message, data, total, page }` |
+| 2 | Request Logging Middleware | ✅ | Logs `[timestamp] METHOD /route` for every request |
+| 3 | Timestamp Tracking | ✅ | `createdAt` + `updatedAt` on all 5 collections |
+| 4 | Password Hashing (bcrypt) | ✅ | All passwords hashed with `bcrypt.hash(password, 10)` |
+| 5 | Advanced Search using Regex | ✅ | Case-insensitive `$regex` search on instruction + topic + output |
+| 6 | Database Seeding Script | ✅ | `npm run seed` — loads all 3,202 records automatically |
+| 7 | Role-Based Access Control | ✅ | `admin` and `user` roles, protected via middleware |
+| 8 | Health Check API | ✅ | `GET /health` with uptime and status |
+| 9 | Basic Rate Limiting | ✅ | 5 different limiters (general, strict, search, delete, upload) |
+| 10 | JWT Token Expiry Handling | ✅ | Expired tokens return `401` with clear error message |
 
 ---
 
-## Error Handling
+## 🏗️ System Design
 
-All errors are processed by the global `error.middleware.js` and returned in a consistent format.
-
-### HTTP Status Codes
-
-| Code | Meaning |
-|------|---------|
-| `200` | Success |
-| `201` | Resource created |
-| `400` | Bad request / validation error |
-| `401` | Unauthorized — missing or invalid token |
-| `403` | Forbidden — valid token but insufficient role |
-| `404` | Resource not found |
-| `409` | Conflict — resource already exists |
-| `429` | Too many requests (rate limited) |
-| `500` | Internal server error |
-
-### Error Response Format
-
-```json
-{
-  "success": false,
-  "message": "Detailed error message here",
-  "stack": "..." // Only shown in development (NODE_ENV=development)
-}
+### Architecture — Monolithic MVC
+```
+Client Request
+     │
+     ▼
+[ Express Server ] ← CORS + Logger Middleware
+     │
+     ▼
+[ Rate Limiter ] ← per-route limits
+     │
+     ▼
+[ Auth Middleware ] ← JWT verification (protected routes)
+     │
+     ▼
+[ Role Middleware ] ← admin/user check
+     │
+     ▼
+[ Controller ] ← handles req/res only
+     │
+     ▼
+[ Service ] ← all business logic + DB queries
+     │
+     ▼
+[ Mongoose Model ] ← MongoDB schema + validation
+     │
+     ▼
+[ MongoDB ] ← data storage
+     │
+     ▼
+[ Error Middleware ] ← global error handler
+     │
+     ▼
+Client Response { success, message, data }
 ```
 
-### Validation Errors
-
-```json
-{
-  "success": false,
-  "message": "Validation failed",
-  "errors": [
-    { "field": "instruction", "message": "instruction is required" },
-    { "field": "difficulty", "message": "difficulty must be one of: beginner, intermediate, medium, hard, easy, advanced" }
-  ]
-}
+### Middleware Chain Example
 ```
+POST /problems  →  rateLimiter  →  authMiddleware  →  controller  →  service  →  MongoDB
+GET  /admin/*   →  rateLimiter  →  authMiddleware  →  roleMiddleware("admin")  →  controller
+```
+
+### Scaling Concepts Understood
+- **Vertical Scaling** — increase CPU/RAM on single server
+- **Horizontal Scaling** — run multiple Node.js instances behind a load balancer
+- **Indexing** — `topic`, `difficulty`, `dataset_source`, `problem_number` are indexed for fast queries
+- **Pagination** — all list endpoints support `?page=&limit=` to avoid large payload transfers
+- **Aggregation** — MongoDB `$match → $group → $project → $sort` pipelines for stats
 
 ---
 
-## Data Reference
+## 📊 Aggregation Pipeline Example
 
-### Collections
+```js
+// Stats by difficulty — used in GET /stats/difficulties
+Problem.aggregate([
+  { $match: {} },                                     // match all
+  { $group: { _id: "$difficulty", count: { $sum: 1 } } }, // group by difficulty
+  { $project: { difficulty: "$_id", count: 1, _id: 0 } }, // rename fields
+  { $sort: { count: -1 } }                            // sort by most common
+])
 
-| Collection | Documents | Description |
-|------------|-----------|-------------|
-| `problems` | 3,202 | All Go coding problems and their solutions |
-| `topics` | 285 | Unique topic categories |
-| `datasets` | 2 | Dataset source metadata |
-| `users` | dynamic | Registered users |
-
-### Difficulty Levels
-
-| Value | Records | Description |
-|-------|---------|-------------|
-| `beginner` | 1,884 | Introductory Go concepts |
-| `intermediate` | 381 | Core Go patterns |
-| `medium` | 268 | Moderate complexity |
-| `hard` | 158 | Complex challenges |
-| `easy` | 146 | Simple exercises |
-| `advanced` | 114 | Expert-level Go |
-| `null` | 251 | Not yet classified |
-
-### Dataset Sources
-
-| Value | Records | Description |
-|-------|---------|-------------|
-| `previous-ultimate-dataset` | 1,521 | Core Go problems, LeetCode, and go.dev |
-| `go-source-code` | 1,681 | Go standard library source code analysis |
-
-### Problem Schema
-
-```json
-{
-  "_id": "ObjectId",
-  "instruction": "string",
-  "output": "string",
-  "topic": "string",
-  "difficulty": "string",
-  "dataset_source": "string",
-  "createdAt": "Date",
-  "updatedAt": "Date"
-}
-```
-
-### Topic Schema
-
-```json
-{
-  "_id": "ObjectId",
-  "name": "string",
-  "category": "string",
-  "problemCount": "number",
-  "createdAt": "Date",
-  "updatedAt": "Date"
-}
+// Result:
+[
+  { difficulty: "advanced", count: 892 },
+  { difficulty: "intermediate", count: 741 },
+  { difficulty: "medium", count: 534 },
+  ...
+]
 ```
 
 ---
 
-## Environment Variables
+<div align="center">
 
-| Variable | Required | Description | Example |
-|----------|----------|-------------|---------|
-| `PORT` | ✅ | Server port | `5000` |
-| `MONGO_URI` | ✅ | MongoDB connection string | `mongodb://localhost:27017/go-epic` |
-| `NODE_ENV` | ✅ | Environment mode | `development` \| `production` |
-| `JWT_SECRET` | ✅ | Secret key for signing access tokens | `your_super_secret_key` |
-| `JWT_EXPIRE` | ✅ | Access token expiry duration | `7d` |
-| `JWT_REFRESH_SECRET` | ✅ | Secret key for signing refresh tokens | `your_refresh_secret` |
-| `JWT_REFRESH_EXPIRE` | ✅ | Refresh token expiry duration | `30d` |
+**Go-Epic Backend · Built for Sem 2 Full Stack Project 2026**
 
-> ⚠️ **Never commit `.env` to version control.** Use `.env.example` to document required variables.
-
----
-
-## Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with nodemon (auto-restart on changes) |
-| `npm start` | Start production server |
-| `npm run seed` | Seed the database from `data/go-epic.json` |
-
----
-
-## Deployment
-
-### Deploy to a VPS (e.g. Ubuntu + PM2)
-
-```bash
-# Install PM2 globally
-npm install -g pm2
-
-# Start the app with PM2
-pm2 start server.js --name go-epic
-
-# Enable auto-restart on reboot
-pm2 startup
-pm2 save
-```
-
-### Deploy to Railway / Render / Fly.io
-
-1. Push your repo to GitHub.
-2. Connect it to your hosting provider.
-3. Set all environment variables from `.env.example` in the dashboard.
-4. Set the start command to `npm start`.
-5. Run `npm run seed` from the provider's shell or a one-off job after deployment.
-
-### Using MongoDB Atlas
-
-Replace the `MONGO_URI` in your `.env` with your Atlas connection string:
-
-```env
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/go-epic?retryWrites=true&w=majority
-```
-
----
-
-## Contributing
-
-Contributions are welcome! Here's how to get started:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Make your changes and commit: `git commit -m 'feat: add my feature'`
-4. Push to your fork: `git push origin feature/my-feature`
-5. Open a pull request
-
-### Commit Message Convention
-
-This project follows [Conventional Commits](https://www.conventionalcommits.org/):
-
-```
-feat: add new endpoint
-fix: resolve pagination bug
-docs: update README
-refactor: clean up auth middleware
-test: add unit tests for pagination service
-```
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-<p align="center">Built with ❤️ for the Go developer community</p>
+</div>
