@@ -1,10 +1,12 @@
 {
-  "name": "go_epic_jaydip_valiya",
+ "name": "go-epic",
   "version": "1.0.0",
-  "description": "> A production-ready REST API for Go coding problems, topics, solutions, and datasets — built with Node.js, Express.js, and MongoDB.",
-  "main": "index.js",
+  "description": "Go-Epic backend — 3202 Go programming problems API",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "seed": "node src/seed.js"
   },
   "repository": {
     "type": "git",
