@@ -1,6 +1,6 @@
 const bcrypt  = require("bcryptjs");
 const jwt     = require("jsonwebtoken");
-const User    = require("../../../../go-epic-backend-final/src/models/user.model");
+const User    = require("../models/User.model");
 
 const register = async ({ name, email, password }) => {
   const existing = await User.findOne({ email });
