@@ -1,0 +1,72 @@
+.stats-card {
+  position: relative;
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stats-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.stats-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stats-card-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stats-card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  line-height: 1.2;
+}
+
+.stats-card-subtext {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.stats-card-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+}
+
+/* Color overrides for active border status if needed */
+.border-cyan { border-left: 2px solid var(--go-cyan); }
+.border-green { border-left: 2px solid var(--diff-beginner); }
+.border-yellow { border-left: 2px solid var(--diff-medium); }
+.border-red { border-left: 2px solid var(--diff-advanced); }
+
+/* Remove old glow rules since they look AI-generated */
+.stats-card-glow,
+.stats-card:hover .stats-card-glow {
+  display: none !important;
+}
+
+.stats-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+}

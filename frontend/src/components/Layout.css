@@ -1,0 +1,36 @@
+.layout-topbar {
+  display: none; /* topbar content is minimal on desktop, sidebar has everything */
+}
+
+@media (max-width: 768px) {
+  .layout-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--topbar-height);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    z-index: 50;
+  }
+
+  .topbar-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 800;
+    font-size: 1.125rem;
+  }
+
+  .topbar-logo .logo-go {
+    color: var(--go-cyan);
+  }
+
+  .topbar-logo .logo-epic {
+    color: var(--text-primary);
+  }
+}

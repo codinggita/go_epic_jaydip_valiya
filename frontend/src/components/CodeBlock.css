@@ -1,0 +1,68 @@
+.code-block-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  margin: var(--space-md) 0;
+}
+
+.code-block-wrapper:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-secondary);
+  transform: none; /* No lifting effect for code blocks */
+  box-shadow: var(--shadow-sm);
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(10, 14, 23, 0.6);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.code-block-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.code-block-filename {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.code-block-copy {
+  padding: var(--space-xs) var(--space-sm);
+  height: auto;
+  min-height: unset;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: all var(--transition-fast);
+}
+
+.code-block-copy:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.code-block-content {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.code-block-content pre {
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.code-block-content code {
+  white-space: pre !important;
+  word-break: normal !important;
+}
