@@ -1,0 +1,230 @@
+.problem-detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.problem-detail-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.back-link:hover {
+  color: var(--go-cyan);
+}
+
+.problem-detail-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.problem-left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.problem-main-card {
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.problem-detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--space-sm);
+}
+
+.problem-header-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.problem-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.badge-content-type {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.problem-detail-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #f0f6fc;
+}
+
+.problem-instruction-section h3 {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.instruction-text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.problem-solution-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.section-title-row h3 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text-secondary);
+}
+
+/* Sidebar metadata card */
+.problem-metadata-card {
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.problem-metadata-card h3 {
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--space-xs);
+  color: #f0f6fc;
+}
+
+.metadata-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.metadata-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.meta-icon {
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+.meta-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.meta-value {
+  font-size: 0.875rem;
+  font-weight: 550;
+  color: var(--text-primary);
+}
+
+/* Complexity rating bar */
+.complexity-meter-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+.complexity-meter-track {
+  height: 5px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  width: 100%;
+}
+
+.complexity-meter-fill {
+  height: 100%;
+  background: var(--go-cyan);
+  border-radius: var(--radius-full);
+}
+
+.reference-btn {
+  margin-top: var(--space-xs);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+/* Error page styling */
+.problem-error-container {
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  max-width: 450px;
+  margin: var(--space-2xl) auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .problem-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
