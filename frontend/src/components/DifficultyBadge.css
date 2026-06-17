@@ -1,0 +1,13 @@
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.badge-unknown {
+  background: rgba(100, 116, 139, 0.15);
+  color: var(--text-tertiary);
+  border: 1px solid rgba(100, 116, 139, 0.25);
+}
