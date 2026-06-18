@@ -37,6 +37,18 @@
 
 ---
 
+<div align="center">
+
+### 🔗 Live Links
+
+[![Backend API](https://img.shields.io/badge/Backend_API-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://go-epic-jaydip-valiya.onrender.com)
+[![Frontend App](https://img.shields.io/badge/Frontend_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://go-epic-jv.vercel.app)
+[![API Docs](https://img.shields.io/badge/API_Docs-Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://documenter.getpostman.com/view/50839173/2sBXwtqq3L)
+
+</div>
+
+---
+
 ## 📖 Table of Contents
 
 | # | Section | Description |
