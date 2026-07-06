@@ -127,64 +127,111 @@ It serves **3,202 real-world problems** complete with solutions, sourced from Go
 ## 📁 Project Structure
 
 ```
-go-epic/
+go_epic_jaydip_valiya/
 │
-├── 📂 src/
-│   │
-│   ├── 📂 config/
-│   │   └── db.js                    ←  MongoDB connection with error handling
-│   │
-│   ├── 📂 models/                   ←  Mongoose schemas (database layer)
-│   │   ├── problem.model.js         ←  13 fields, indexed for performance
-│   │   ├── topic.model.js           ←  Topic metadata with problem counts
-│   │   ├── solution.model.js        ←  Solutions linked to problems (ref)
-│   │   ├── dataset.model.js         ←  Dataset source summaries
-│   │   └── user.model.js            ←  Users with role-based access
-│   │
-│   ├── 📂 controllers/              ←  Request / Response handlers only
-│   │   ├── problem.controller.js
-│   │   ├── topic.controller.js
-│   │   ├── solution.controller.js
-│   │   ├── dataset.controller.js
-│   │   ├── auth.controller.js
-│   │   ├── jwt.controller.js
-│   │   ├── admin.controller.js
-│   │   ├── protected.controller.js
-│   │   └── search.controller.js
-│   │
-│   ├── 📂 services/                 ←  Business logic & DB query layer
-│   │   ├── problem.service.js       ←  Filter · Sort · Paginate · Aggregate
-│   │   ├── topic.service.js
-│   │   ├── solution.service.js
-│   │   ├── dataset.service.js
-│   │   └── auth.service.js
-│   │
-│   ├── 📂 routes/                   ←  Express route definitions
-│   │   ├── problem.routes.js
-│   │   ├── topic.routes.js
-│   │   ├── solution.routes.js
-│   │   ├── dataset.routes.js
-│   │   ├── auth.routes.js
-│   │   ├── jwt.routes.js
-│   │   ├── admin.routes.js
-│   │   ├── protected.routes.js
-│   │   └── search.routes.js
-│   │
-│   ├── 📂 middlewares/              ←  Request pipeline middleware
-│   │   ├── auth.middleware.js       ←  JWT token verification
-│   │   ├── role.middleware.js       ←  Role-based access (admin / user)
-│   │   ├── logger.middleware.js     ←  Timestamped request logging
-│   │   ├── error.middleware.js      ←  Global error handler
-│   │   └── rateLimit.middleware.js  ←  5 tier rate limiting
-│   │
-│   ├── app.js                       ←  Express app config + route mounting
-│   ├── index.js                     ←  Server entry point
-│   └── seed.js                      ←  One-time database seeder script
+├── 📂 backend/                       ←  Express API and database backend
+│   ├── go-epic.json
+│   ├── package.json
+│   ├── 📂 src/
+│   │   ├── app.js
+│   │   ├── index.js
+│   │   ├── seed.js
+│   │   ├── 📂 config/
+│   │   │   └── db.js                    ←  MongoDB connection with error handling
+│   │   ├── 📂 models/                   ←  Mongoose schemas (database layer)
+│   │   │   ├── problem.model.js         ←  13 fields, indexed for performance
+│   │   │   ├── topic.model.js           ←  Topic metadata with problem counts
+│   │   │   ├── solution.model.js        ←  Solutions linked to problems (ref)
+│   │   │   ├── dataset.model.js         ←  Dataset source summaries
+│   │   │   └── user.model.js            ←  Users with role-based access
+│   │   ├── 📂 controllers/              ←  Request / Response handlers only
+│   │   │   ├── problem.controller.js
+│   │   │   ├── topic.controller.js
+│   │   │   ├── solution.controller.js
+│   │   │   ├── dataset.controller.js
+│   │   │   ├── auth.controller.js
+│   │   │   ├── jwt.controller.js
+│   │   │   ├── admin.controller.js
+│   │   │   ├── protected.controller.js
+│   │   │   └── search.controller.js
+│   │   ├── 📂 services/                 ←  Business logic & DB query layer
+│   │   │   ├── problem.service.js       ←  Filter · Sort · Paginate · Aggregate
+│   │   │   ├── topic.service.js
+│   │   │   ├── solution.service.js
+│   │   │   ├── dataset.service.js
+│   │   │   └── auth.service.js
+│   │   ├── 📂 routes/                   ←  Express route definitions
+│   │   │   ├── problem.routes.js
+│   │   │   ├── topic.routes.js
+│   │   │   ├── solution.routes.js
+│   │   │   ├── dataset.routes.js
+│   │   │   ├── auth.routes.js
+│   │   │   ├── jwt.routes.js
+│   │   │   ├── admin.routes.js
+│   │   │   ├── protected.routes.js
+│   │   │   └── search.routes.js
+│   │   ├── 📂 middlewares/              ←  Request pipeline middleware
+│   │   │   ├── auth.middleware.js       ←  JWT token verification
+│   │   │   ├── role.middleware.js       ←  Role-based access (admin / user)
+│   │   │   ├── logger.middleware.js     ←  Timestamped request logging
+│   │   │   ├── error.middleware.js      ←  Global error handler
+│   │   │   └── rateLimit.middleware.js  ←  5 tier rate limiting
+│   │   └── README.md                   ←  Backend-specific documentation
 │
-├── .env                             ←  ⚠️  Never commit this file
-├── .env.example                     ←  Template for new environments
-├── package.json
-└── README.md
+├── 📂 frontend/                      ←  React + Vite application
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── README.md
+│   ├── vite.config.js
+│   ├── 📂 public/
+│   │   └── _redirects
+│   ├── 📂 src/
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   ├── 📂 api/
+│   │   │   └── axios.js
+│   │   ├── 📂 assets/
+│   │   ├── 📂 components/
+│   │   │   ├── CodeBlock.jsx
+│   │   │   ├── CodeBlock.css
+│   │   │   ├── DifficultyBadge.jsx
+│   │   │   ├── DifficultyBadge.css
+│   │   │   ├── Layout.jsx
+│   │   │   ├── Layout.css
+│   │   │   ├── Pagination.jsx
+│   │   │   ├── Pagination.css
+│   │   │   ├── ProblemCard.jsx
+│   │   │   ├── ProblemCard.css
+│   │   │   ├── ProtectedRoute.jsx
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── SearchBar.css
+│   │   │   ├── Sidebar.jsx
+│   │   │   ├── Sidebar.css
+│   │   │   ├── StatsCounter.jsx
+│   │   │   ├── StatsCounter.css
+│   │   │   ├── Topbar.jsx
+│   │   │   ├── TopicCard.jsx
+│   │   │   └── TopicCard.css
+│   │   ├── 📂 context/
+│   │   │   └── AuthContext.jsx
+│   │   ├── 📂 pages/
+│   │   │   ├── Auth.css
+│   │   │   ├── Dashboard.css
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── ProblemDetail.css
+│   │   │   ├── ProblemDetail.jsx
+│   │   │   ├── Problems.css
+│   │   │   ├── Problems.jsx
+│   │   │   ├── Profile.css
+│   │   │   ├── Profile.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Topics.css
+│   │   │   └── Topics.jsx
+│   │   └── main.jsx
 ```
 
 ---
